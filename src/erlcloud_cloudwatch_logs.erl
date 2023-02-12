@@ -29,7 +29,7 @@
 -type metric_name() :: string() | binary() | undefined.
 -type metric_namespace() :: string() | binary() | undefined.
 -type log_stream_order() :: log_stream_name | last_event_time | undefined.
--type events() :: [#{message => binary(), timestamp => pos_integer()}].
+-type events() :: [{<<"message">>, binary()}, {<<"timestamp">>, pos_integer()}].
 -type kms_key_id() :: string() | binary() | undefined.
 
 
