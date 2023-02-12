@@ -494,7 +494,7 @@ put_logs_events(LogGroup, LogStream, SeqToken, Events, Config) ->
 
 req_logs_events(LogGroup, LogStream, SeqToken, Events) ->
     [
-        {<<"logEvents">>, log_events(Events)},
+        {<<"logEvents">>, Events},
         {<<"logGroupName">>, LogGroup},
         {<<"logStreamName">>, LogStream},
         {<<"sequenceToken">>, SeqToken}
@@ -695,7 +695,7 @@ maybe_cw_request({error, _} = Error, _Action, _Params) ->
 maybe_json({ok, <<>>}) ->
     {ok, []};
 maybe_json({ok, Response}) ->
-    {ok, jsx:decode(Response, [{return_maps, false}])};
+    {ok, jsx:decode(Response)};
 maybe_json({error, _} = Error) ->
     Error.
 
